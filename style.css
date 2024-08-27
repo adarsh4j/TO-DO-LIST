@@ -1,34 +1,43 @@
-*{
-    margin:0;
-    padding:0;
-    font-family: 'Poppins',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
-.container{
-    width:100%;
+
+.container {
+    width: 100%;
     min-height: 100vh;
     background: linear-gradient(98.3deg, rgb(0, 0, 0) 10.6%, rgb(255, 0, 0) 97.7%);
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.todo{
+
+.todo {
     width: 100%;
-    max-width:540px;
+    max-width: 540px;
     background: #fff;
-    margin: 100px auto 20px;
+    margin: 20px auto;
     padding: 40px 30px 70px;
     border-radius: 10px;
 }
-.todo h2{
+
+.todo h2 {
     color: #002765;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Added this to handle smaller screens */
 }
-.todo h2 img{
-   width: 51px;
-   margin-left: 10px;
+
+.todo h2 img {
+    width: 51px;
+    margin-left: 10px;
 }
-.row{
+
+.row {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -36,18 +45,22 @@
     border-radius: 30px;
     padding-left: 20px;
     margin-bottom: 25px;
+    flex-wrap: wrap; /* Added this to handle smaller screens */
 }
-input{
+
+input {
     flex: 1;
     border: none;
     outline: none;
     background: transparent;
     padding: 10px;
+    min-width: 150px; /* Minimum width to ensure it doesn't shrink too much */
 }
-button{
+
+button {
     border: none;
     outline: none;
-    padding: 16px 50px;
+    padding: 12px 20px; /* Reduced padding for better mobile fit */
     font-size: 16px;
     cursor: pointer;
     border-radius: 40px;
@@ -55,18 +68,21 @@ button{
     color: #03e9f4;
     overflow: hidden;
     transition: 0.5s;
-  }
-  
-  button:hover{
-      background: #03e9f4;
-      color: #050801;
-      box-shadow: 0 0 5px #03e9f4,
-                  0 0 25px #03e9f4,
-                  0 0 50px #03e9f4,
-                  0 0 200px #03e9f4;
-       -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
-  }
-ul li{
+    margin-left: 10px; /* Added some space between input and button */
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+button:hover {
+    background: #03e9f4;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 200px #03e9f4;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+ul li {
     list-style: none;
     font-size: 17px;
     padding: 12px 8px 12px 50px;
@@ -74,8 +90,8 @@ ul li{
     cursor: pointer;
     position: relative;
 }
-ul li::before
-{
+
+ul li::before {
     content: '';
     position: absolute;
     height: 20px;
@@ -87,15 +103,17 @@ ul li::before
     top: 12px;
     left: 8px;
 }
-ul li.checked{
-  color: #555;
-  text-decoration: line-through;
-  
+
+ul li.checked {
+    color: #555;
+    text-decoration: line-through;
 }
-ul li.checked::before{
+
+ul li.checked::before {
     background-image: url(images/checked.png);
 }
-ul li span{
+
+ul li span {
     position: absolute;
     right: 0px;
     top: 5px;
@@ -107,11 +125,40 @@ ul li span{
     text-align: center;
     border-radius: 50%;
 }
-ul li span:hover
-{
+
+ul li span:hover {
     background: #d2cbcb;
 }
 
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .todo {
+        padding: 20px;
+    }
+
+    .row {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    input {
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px 0;
+        margin-left: 0;
+    }
+
+    ul li {
+        padding-left: 35px;
+    }
+
+    ul li::before {
+        top: 16px;
+    }
+}
 
 
 
